@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yiibai.mybatis.dao.UserDao">
+
+<!-- 	private int id;
+	private String name;
+	private String dept;
+	private String website;
+	private String phone; -->
+	<select id="GetUserByID" parameterType="int" resultType="User">
+		select * from `user` where id = #{id}
+    </select>
+    
+    <!-- 定义的resultMap，可以解决类的属性名和数据库列名不一致的问题-->
+    <resultMap type="User" id="userMapResult">
+        <id property="id" column="id"  />
+        <result property="name" column="name"  />
+        <result property="dept" column="dept"  />
+        <result property="website" column="website"  />
+        <result property="phone" column="phone"  />
+    </resultMap>
+    
+	<!--     返回list的select语句，注意 resultMap的值是指向前面定义好的
+    <select id="selectUsersByName" parameterType="string" resultMap="userResultMap">
+        select * from user where user.userName = #{userName}
+    </select> -->
+    <select id="getUserList"  resultMap="userMapResult">
+		select * from user 
+    </select>
+    
+	<insert id="insertUser" parameterType="User" 
+        useGeneratedKeys="true" keyProperty="id"> 
+        insert into user(id,name,dept,website,phone)
+             values(#{id,jdbcType=INTEGER},#{name},#{dept},#{website},#{phone})  
+    </insert>
+    
+    <update id="updateUser" parameterType="User" >
+        update user set name=#{name},dept=#{dept},website=#{website},phone=#{phone} where id=#{id}
+    </update>
+    
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+    
+    <select id="getUser" parameterType="int" resultType="User">
+		select * from user where id = #{id}
+    </select>
+
+</mapper>
