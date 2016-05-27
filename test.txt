@@ -1,3 +1,5 @@
 changed to UTF8 encode
-里面的内容全都变了，
+里面的内容全都变了变了变了
 你看看
+我在eclipse 中对file进行了这样的修改
+并且第二行的末尾被改了
