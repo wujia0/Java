@@ -1,5 +1,3 @@
-﻿changed to UTF8 encode
-里面的内容全都发生了改变
+changed to UTF8 encode
+里面的内容全都变了，
 你看看
-现在我在github desktop 中加了这一行
-并且把第二行的末尾给改了
